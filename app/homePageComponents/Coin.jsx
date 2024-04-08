@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { TrendingDown, TrendingUp } from "../icons/icons";
 import { currencyFormat } from "../utils";
 
 const Coin = ({ coin }) => {
   return (
-    <>
+    <Link href={`/coin/${coin.id}`}>
       <div className="grid grid-cols-3 sm:grid-cols-4 font-light p-2 rounded border-gray-200 border-b hover:bg-gray-200">
         <div className="flex items-center gap-1 w-full">
           <img src={coin.image} alt={coin.name} className="w-6" />
@@ -32,7 +33,7 @@ const Coin = ({ coin }) => {
           <span>{currencyFormat(coin.market_cap)}</span>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 
