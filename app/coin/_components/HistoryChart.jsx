@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import useAxios from "../../hooks/useAxios";
+import Skeleton from "../../components/Skeleton";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -33,7 +34,12 @@ const HistoryChart = () => {
     `coins/${id}/market_chart?vs_currency=usd&days=7`
   );
 
-  if (!response) return <p>Loading...</p>;
+  if (!response)
+    return (
+      <div className="max-w-5xl mx-auto px-2 mt-8">
+        <Skeleton className="h-72 w-full mb-10" />
+      </div>
+    );
 
   const coinChartData = response.prices.map((value) => ({
     x: value[0],
